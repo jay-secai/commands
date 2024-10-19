@@ -1,0 +1,206 @@
+### ESXi Host Commands
+1. **Check ESXi version**:  
+   `vmware -v`  
+   *Use Case*: Display the installed version of ESXi.
+
+2. **List all VMs on the ESXi host**:  
+   `vim-cmd vmsvc/getallvms`  
+   *Use Case*: Show all virtual machines running on the ESXi host.
+
+3. **Power on a VM**:  
+   `vim-cmd vmsvc/power.on <VMID>`  
+   *Use Case*: Power on a specific virtual machine.
+
+4. **Power off a VM**:  
+   `vim-cmd vmsvc/power.off <VMID>`  
+   *Use Case*: Power off a specific virtual machine.
+
+5. **Restart the ESXi management agents**:  
+   `services.sh restart`  
+   *Use Case*: Restart management agents on the ESXi host.
+
+6. **List all network interfaces**:  
+   `esxcli network nic list`  
+   *Use Case*: Display all network interfaces on the ESXi host.
+
+7. **View active network connections**:  
+   `esxcli network ip connection list`  
+   *Use Case*: Show active network connections.
+
+8. **Check ESXi host uptime**:  
+   `esxcli hardware platform get`  
+   *Use Case*: Display host uptime.
+
+9. **Get host hardware information**:  
+   `esxcli hardware get`  
+   *Use Case*: Get detailed hardware info about the ESXi host.
+
+10. **Check system health**:  
+    `esxcli system health status get`  
+    *Use Case*: Display the overall health status of the system.
+
+11. **View host configuration**:  
+    `vim-cmd hostsvc/hostsummary`  
+    *Use Case*: Show a summary of host configuration.
+
+12. **Show CPU information**:  
+    `esxcli hardware cpu list`  
+    *Use Case*: Display detailed CPU information.
+
+13. **Show memory usage**:  
+    `esxcli memory get`  
+    *Use Case*: Show current memory usage.
+
+14. **List installed patches**:  
+    `esxcli software vib list`  
+    *Use Case*: List all installed patches and VIBs (VMware Installation Bundles).
+
+15. **Get the host's current configuration**:  
+    `vim-cmd hostsvc/configinfo`  
+    *Use Case*: Get detailed configuration information.
+
+16. **View the power status of all VMs**:  
+    `vim-cmd vmsvc/get.powerstate <VMID>`  
+    *Use Case*: Check the power state of a specific VM.
+
+17. **Get the list of VM resources**:  
+    `vim-cmd vmsvc/get.resource <VMID>`  
+    *Use Case*: Display resource allocations for a VM.
+
+18. **Check for hardware changes**:  
+    `esxcli hardware platform get`  
+    *Use Case*: Check for hardware changes on the ESXi host.
+
+19. **Display ESXi system logs**:  
+    `less /var/log/syslog.log`  
+    *Use Case*: View the system logs.
+
+20. **List all VMs with their configurations**:  
+    `vim-cmd vmsvc/getallvms | more`  
+    *Use Case*: List VMs along with detailed configuration information.
+
+---
+
+### VM and Resource Management
+21. **Migrate a VM using vMotion**:  
+    `vim-cmd vmsvc/migrate <VMID> <destination_host>`  
+    *Use Case*: Migrate a VM to a different host using vMotion.
+
+22. **List VM snapshots**:  
+    `vim-cmd vmsvc/snapshot.get <VMID>`  
+    *Use Case*: Display all snapshots for a specific VM.
+
+23. **Create a new snapshot**:  
+    `vim-cmd vmsvc/snapshot.create <VMID> <snapshot_name> <description>`  
+    *Use Case*: Create a snapshot for a VM.
+
+24. **Remove all VM snapshots**:  
+    `vim-cmd vmsvc/snapshot.removeall <VMID>`  
+    *Use Case*: Delete all snapshots for a specific VM.
+
+25. **Monitor ESXi performance (CPU, Memory)**:  
+    `esxtop`  
+    *Use Case*: Monitor performance metrics of the ESXi host.
+
+26. **Rescan all storage adapters**:  
+    `esxcli storage core adapter rescan --all`  
+    *Use Case*: Rescan all storage devices.
+
+27. **List all storage devices**:  
+    `esxcli storage core device list`  
+    *Use Case*: Display all available storage devices.
+
+28. **List available datastores**:  
+    `esxcli storage filesystem list`  
+    *Use Case*: List all datastores accessible by the host.
+
+29. **Check disk usage**:  
+    `df -h`  
+    *Use Case*: Check the disk usage of the system.
+
+30. **View VM resource allocation**:  
+    `vim-cmd vmsvc/get.resource <VMID>`  
+    *Use Case*: Display resource allocation for a specific VM.
+
+31. **Add a new VM network adapter**:  
+    `vim-cmd vmsvc/nic.add <VMID> <adapter_type> <network_name>`  
+    *Use Case*: Add a network adapter to a virtual machine.
+
+32. **Change VM resource allocation**:  
+    `vim-cmd vmsvc/reconfig <VMID> <new_config>`  
+    *Use Case*: Modify the resource configuration for a VM.
+
+33. **Display VM logs**:  
+    `tail -f /vmfs/volumes/<datastore>/<vm_name>/vmware.log`  
+    *Use Case*: View the log files for a specific VM.
+
+34. **Clone a VM**:  
+    `vim-cmd vmsvc/clone <VMID> <new_name>`  
+    *Use Case*: Clone a virtual machine.
+
+35. **Power off all VMs on the host**:  
+    `for vmid in $(vim-cmd vmsvc/getallvms | awk '{print $1}'); do vim-cmd vmsvc/power.off $vmid; done`  
+    *Use Case*: Power off all virtual machines on the host.
+
+36. **Create a new VM**:  
+    `vim-cmd vmsvc/create <VM_Name> <Datastore> <VM_ID>`  
+    *Use Case*: Create a new virtual machine on the ESXi host.
+
+37. **View VM summary**:  
+    `vim-cmd vmsvc/get.summary <VMID>`  
+    *Use Case*: Display a summary of a specific virtual machine.
+
+38. **Get VM hardware compatibility**:  
+    `vim-cmd vmsvc/get.hardware.version <VMID>`  
+    *Use Case*: Check the hardware compatibility version of a virtual machine.
+
+39. **Enable VM tools**:  
+    `vim-cmd vmsvc/tools.install <VMID>`  
+    *Use Case*: Install VMware Tools on a virtual machine.
+
+40. **Disable VM tools**:  
+    `vim-cmd vmsvc/tools.uninstall <VMID>`  
+    *Use Case*: Uninstall VMware Tools from a VM.
+
+---
+
+### ESXi Host Maintenance
+41. **Enable maintenance mode**:  
+    `vim-cmd hostsvc/maintenance_mode_enter`  
+    *Use Case*: Put the ESXi host into maintenance mode.
+
+42. **Exit maintenance mode**:  
+    `vim-cmd hostsvc/maintenance_mode_exit`  
+    *Use Case*: Exit maintenance mode.
+
+43. **Reboot the ESXi host**:  
+    `reboot`  
+    *Use Case*: Reboot the host.
+
+44. **Shutdown the ESXi host**:  
+    `shutdown`  
+    *Use Case*: Shut down the host.
+
+45. **Display a list of services**:  
+    `vim-cmd hostsvc/services list`  
+    *Use Case*: List all services running on the ESXi host.
+
+46. **Check the health of the ESXi host**:  
+    `esxcli system health status get`  
+    *Use Case*: Get the current health status of the host.
+
+47. **Get host's current configuration**:  
+    `vim-cmd hostsvc/hostsummary`  
+    *Use Case*: Show the current configuration of the host.
+
+48. **Change the hostname of the ESXi host**:  
+    `esxcli system hostname set --host=<new_hostname>`  
+    *Use Case*: Change the hostname.
+
+49. **Reset the ESXi host**:  
+    `esxcli system maintenanceMode set --enable`  
+    *Use Case*: Reset the host.
+
+50. **Check for hardware compatibility**:  
+    `esxcli system maintenanceMode get`  
+    *Use Case*: Check hardware compatibility for the ESXi host.
