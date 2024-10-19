@@ -92,84 +92,44 @@ Here’s a full list of the 100 VMware ESXi commands from the PDF, formatted in 
 
 ## 5. Networking and Security
 
-| Command | Description | Usage |
-|---------|-------------|-------|
-| `esxcli network firewall ruleset list` | List firewall rules | Display all active firewall rules. |
-| `esxcli network firewall ruleset set --ruleset-id=<ruleset_name> --enabled=true` | Enable a firewall rule | Enable a specific firewall rule on the host. |
-| `vmkping <ip_address>` | Test network connectivity | Ping a network IP address to check connectivity. |
-| `esxcli network ip dns search list` | Display DNS configuration | Show the DNS search configuration for the host. |
-| `esxcli network vswitch standard portgroup list` | List VLANs | Display all VLANs on the host. |
-| `esxcli network vswitch standard list` | View vSwitch statistics | Display traffic statistics for a virtual switch. |
-
 ## 5. Networking and Security
 
-<table>
-  <thead>
-    <tr>
-      <th>Command</th>
-      <th>Description</th>
-      <th>Usage</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>esxcli network firewall ruleset list</code></td>
-      <td>List firewall rules</td>
-      <td>Display all active firewall rules.</td>
-    </tr>
-    <tr>
-      <td><code>esxcli network firewall ruleset set --ruleset-id=&lt;ruleset_name&gt; --enabled=true</code></td>
-      <td>Enable a firewall rule</td>
-      <td>Enable a specific firewall rule on the host.</td>
-    </tr>
-    <tr>
-      <td><code>vmkping &lt;ip_address&gt;</code></td>
-      <td>Test network connectivity</td>
-      <td>Ping a network IP address to check connectivity.</td>
-    </tr>
-    <tr>
-      <td><code>esxcli network ip dns search list</code></td>
-      <td>Display DNS configuration</td>
-      <td>Show the DNS search configuration for the host.</td>
-    </tr>
-    <tr>
-      <td><code>esxcli network vswitch standard portgroup list</code></td>
-      <td>List VLANs</td>
-      <td>Display all VLANs on the host.</td>
-    </tr>
-    <tr>
-      <td><code>esxcli network vswitch standard list</code></td>
-      <td>View vSwitch statistics</td>
-      <td>Display traffic statistics for a virtual switch.</td>
-    </tr>
-  </tbody>
-</table>
+| Command                                                                          | Description                | Usage                                            |
+|----------------------------------------------------------------------------------|----------------------------|--------------------------------------------------|
+| `esxcli network firewall ruleset list`                                           | List firewall rules        | Display all active firewall rules.               |
+| `esxcli network firewall ruleset set --ruleset-id=<ruleset_name> --enabled=true` | Enable a firewall rule     | Enable a specific firewall rule on the host.     |
+| `vmkping <ip_address>`                                                           | Test network connectivity  | Ping a network IP address to check connectivity. |
+| `esxcli network ip dns search list`                                              | Display DNS configuration  | Show the DNS search configuration for the host.  |
+| `esxcli network vswitch standard portgroup list`                                 | List VLANs                 | Display all VLANs on the host.                   |
+| `esxcli network vswitch standard list`                                           | View vSwitch statistics    | Display traffic statistics for a virtual switch. |
 
 ---
 
 ## 6. Storage Management
 
-| Command | Description | Usage |
-|---------|-------------|-------|
-| `esxcli storage core device stats get --device=<device_name>` | Display storage statistics | Show performance stats for a storage device. |
-| `esxcli storage vmfs extent list` | List VMFS datastores | Display all VMFS datastores. |
-| `esxcli storage vmfs create --volume-label=<label> --device=<device_name>` | Create a VMFS datastore | Create a new VMFS datastore. |
-| `esxcli storage vmfs unmount --volume-label=<label>` | Unmount a datastore | Unmount a VMFS datastore. |
-| `esxcli storage core adapter rescan --adapter=<adapter_name>` | Rescan a storage adapter | Rescan a specific storage adapter for devices. |
+| Command                                                                     | Description                | Usage                                          |
+|-----------------------------------------------------------------------------|----------------------------|------------------------------------------------|
+| `esxcli storage core device stats get --device=<device_name>`               | Display storage statistics | Show performance stats for a storage device.   |
+| `esxcli storage vmfs extent list`                                           | List VMFS datastores       | Display all VMFS datastores.                   |
+| `esxcli storage vmfs create --volume-label=<label> --device=<device_name>`  | Create a VMFS datastore    | Create a new VMFS datastore.                   |
+| `esxcli storage vmfs unmount --volume-label=<label>`                        | Unmount a datastore        | Unmount a VMFS datastore.                      |
+| `esxcli storage core adapter rescan --adapter=<adapter_name>`               | Rescan a storage adapter   | Rescan a specific storage adapter for devices. |
+
 
 ---
 
 ## 7. Miscellaneous Commands
 
-| Command | Description | Usage |
-|---------|-------------|-------|
-| `esxcli system settings advanced list` | Display ESXi configuration | Show advanced system settings. |
-| `esxcli system service list` | List services | Show all running services on the ESXi host. |
-| `esxcli software vib list` | Check installed VIBs | List all installed VMware Installation Bundles (VIBs). |
-| `esxcli software vib update --depot=<depot_file>` | Update a VIB | Update a VIB using a depot file. |
-| `esxcli system ntp start` | Start NTP service | Start the NTP service on the ESXi host. |
-| `esxcli system ntp sync` | Sync time with NTP server | Sync the time on the ESXi host with an NTP server. |
-| `vim-cmd vimsvc/license --show` | Display host license | Show the current ESXi host license information. |
+| Command                                                                | Description                | Usage                                          |
+|------------------------------------------------------------------------|----------------------------|------------------------------------------------|
+| `esxcli system settings advanced list`                                 | Display ESXi configuration | Show advanced system settings.                 |
+| `esxcli system service list`                                           | List services              | Show all running services on the ESXi host.    |
+| `esxcli software vib list`                                             | Check installed VIBs       | List all installed VMware Installation Bundles (VIBs). |
+| `esxcli software vib update --depot=<depot_file>`                      | Update a VIB               | Update a VIB using a depot file.               |
+| `esxcli system ntp start`                                              | Start NTP service          | Start the NTP service on the ESXi host.        |
+| `esxcli system ntp sync`                                               | Sync time with NTP server  | Sync the time on the ESXi host with an NTP server. |
+| `vim-cmd vimsvc/license --show`                                        | Display host license       | Show the current ESXi host license information.|
+
 
 ---
 
