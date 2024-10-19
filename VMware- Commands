@@ -18,77 +18,75 @@ Here’s a full list of the 100 VMware ESXi commands from the PDF, formatted in 
 6. [Storage Management](#storage-management)
 7. [Miscellaneous Commands](#miscellaneous-commands)
 
----
-| Command                              | Description                       | Usage                                  |
-|---------------------------------------|-----------------------------------|----------------------------------------|
-| `vmware -v`                           | Check ESXi version                | Displays the installed ESXi version.   |
-| `vim-cmd vmsvc/getallvms`             | List all VMs on the host          | Displays all VMs running on the host.  |
-| `vim-cmd vmsvc/power.on <VMID>`       | Power on a specific VM            | Powers on a virtual machine by ID.     |
-| `esxcli storage core device stats get --device=<device_name>` | Display storage statistics | Shows the performance statistics for a storage device. |
 
 ## 1. ESXi Host Commands
 
-| Command | Description | Usage |
-|---------|-------------|-------|
-| `vmware -v` | Check ESXi version | Show the installed ESXi version. |
-| `vim-cmd vmsvc/getallvms` | List all VMs on the host | Display all virtual machines running on the ESXi host. |
-| `vim-cmd vmsvc/power.on <VMID>` | Power on a VM | Power on a specific virtual machine. |
-| `vim-cmd vmsvc/power.off <VMID>` | Power off a VM | Power off a specific virtual machine. |
-| `services.sh restart` | Restart management agents | Restart the management agents on the ESXi host. |
-| `esxcli network nic list` | List all network interfaces | Show all network interfaces on the host. |
-| `esxcli network ip connection list` | View active network connections | Show all active network connections on the host. |
-| `esxcli hardware platform get` | Check uptime | Display the uptime of the ESXi host. |
-| `esxcli hardware get` | Get hardware information | Display detailed hardware information of the ESXi host. |
-| `esxcli system health status get` | Check system health | Show the health status of the ESXi host. |
-| `vim-cmd hostsvc/hostsummary` | View host configuration | Display the host configuration summary. |
-| `esxcli hardware cpu list` | Show CPU information | Display CPU details. |
-| `esxcli memory get` | Show memory usage | Display memory usage on the host. |
-| `esxcli software vib list` | List installed patches | Show all installed patches and VIBs. |
-| `vim-cmd hostsvc/configinfo` | Get host configuration | Display the current host configuration. |
+| Command                                    | Description                      | Usage                                        |
+|--------------------------------------------|----------------------------------|----------------------------------------------|
+| `vmware -v`                                | Check ESXi version               | Display the installed ESXi version.          |
+| `vim-cmd vmsvc/getallvms`                  | List all VMs on the host         | Show all virtual machines on the host.       |
+| `vim-cmd vmsvc/power.on <VMID>`            | Power on a VM                    | Power on a specific virtual machine.         |
+| `vim-cmd vmsvc/power.off <VMID>`           | Power off a VM                   | Power off a specific virtual machine.        |
+| `services.sh restart`                      | Restart management agents        | Restart ESXi host management agents.         |
+| `esxcli network nic list`                  | List network interfaces          | Show all network interfaces on the host.     |
+| `esxcli network ip connection list`        | View active network connections  | Display active network connections.          |
+| `esxcli hardware platform get`             | Check host uptime                | Display the ESXi host uptime.                |
+| `esxcli hardware get`                      | Get hardware information         | Show detailed hardware info for the host.    |
+| `esxcli system health status get`          | Check system health              | Show the health status of the host.          |
+| `vim-cmd hostsvc/hostsummary`              | View host configuration          | Display the summary of host configuration.   |
+| `esxcli hardware cpu list`                 | Show CPU information             | Display detailed CPU information.            |
+| `esxcli memory get`                        | Show memory usage                | Display memory usage on the host.            |
+| `esxcli software vib list`                 | List installed patches           | Show all installed patches and VIBs.         |
+| `vim-cmd hostsvc/configinfo`               | Get host configuration           | Display the current host configuration.      |
+
 
 ---
 
 ## 2. VM and Resource Management
 
-| Command | Description | Usage |
-|---------|-------------|-------|
-| `vim-cmd vmsvc/migrate <VMID> <destination_host>` | Migrate a VM using vMotion | Move a virtual machine to another host using vMotion. |
-| `vim-cmd vmsvc/snapshot.get <VMID>` | List VM snapshots | Display all snapshots for a specific VM. |
-| `vim-cmd vmsvc/snapshot.create <VMID> <snapshot_name> <description>` | Create a snapshot | Create a new snapshot for a VM. |
-| `vim-cmd vmsvc/snapshot.removeall <VMID>` | Remove all snapshots | Delete all snapshots for a virtual machine. |
-| `esxtop` | Monitor ESXi performance | Monitor CPU and memory performance. |
-| `vim-cmd vmsvc/get.resource <VMID>` | View VM resource allocation | Display resource allocations for a VM. |
-| `vim-cmd vmsvc/nic.add <VMID> <adapter_type> <network_name>` | Add a VM network adapter | Add a network adapter to a virtual machine. |
-| `vim-cmd vmsvc/reconfig <VMID> <new_config>` | Change VM resource allocation | Reconfigure the resource allocation for a VM. |
-| `vim-cmd vmsvc/clone <VMID> <new_name>` | Clone a VM | Clone an existing virtual machine. |
-| `vim-cmd vmsvc/create <VM_Name> <Datastore> <VM_ID>` | Create a new VM | Create a new virtual machine. |
+| Command                                                              | Description                      | Usage                                             |
+|----------------------------------------------------------------------|----------------------------------|---------------------------------------------------|
+| `vim-cmd vmsvc/migrate <VMID> <destination_host>`                    | Migrate a VM using vMotion       | Move a VM to another host via vMotion.            |
+| `vim-cmd vmsvc/snapshot.get <VMID>`                                  | List VM snapshots                | Show all snapshots for a VM.                      |
+| `vim-cmd vmsvc/snapshot.create <VMID> <snapshot_name> <description>` | Create a snapshot                | Create a VM snapshot with a name and description. |
+| `vim-cmd vmsvc/snapshot.removeall <VMID>`                            | Remove all snapshots             | Delete all VM snapshots.                          |
+| `esxtop`                                                             | Monitor ESXi performance         | Monitor ESXi CPU and memory usage.                |
+| `vim-cmd vmsvc/get.resource <VMID>`                                  | View VM resources                | Show resource allocations for a VM.               |
+| `vim-cmd vmsvc/nic.add <VMID> <adapter_type> <network_name>`         | Add a network adapter            | Add a NIC to a VM.                                |
+| `vim-cmd vmsvc/reconfig <VMID> <new_config>`                         | Reconfigure VM resources         | Change resource settings for a VM.                |
+| `vim-cmd vmsvc/clone <VMID> <new_name>`                              | Clone a VM                       | Duplicate an existing VM.                         |
+| `vim-cmd vmsvc/create <VM_Name> <Datastore> <VM_ID>`                 | Create a VM                      | Create a new VM.                                  |
 
 ---
 
 ## 3. ESXi Host Maintenance
 
-| Command | Description | Usage |
-|---------|-------------|-------|
-| `vim-cmd hostsvc/maintenance_mode_enter` | Enable maintenance mode | Put the ESXi host into maintenance mode. |
-| `vim-cmd hostsvc/maintenance_mode_exit` | Exit maintenance mode | Take the ESXi host out of maintenance mode. |
-| `reboot` | Reboot ESXi host | Reboot the host. |
-| `shutdown` | Shutdown ESXi host | Shutdown the host. |
-| `vim-cmd hostsvc/services list` | List services | Show all services running on the host. |
-| `esxcli system hostname set --host=<new_hostname>` | Change hostname | Set a new hostname for the ESXi host. |
-| `esxcli system maintenanceMode set --enable` | Enable maintenance mode | Reset the ESXi host. |
+| Command                                                    | Description               | Usage                                      |
+|------------------------------------------------------------|---------------------------|--------------------------------------------|
+| `vim-cmd hostsvc/maintenance_mode_enter`                   | Enable maintenance mode    | Put the ESXi host into maintenance mode.   |
+| `vim-cmd hostsvc/maintenance_mode_exit`                    | Exit maintenance mode      | Take the ESXi host out of maintenance mode.|
+| `reboot`                                                   | Reboot ESXi host           | Reboot the ESXi host.                      |
+| `shutdown`                                                 | Shutdown ESXi host         | Shutdown the ESXi host.                    |
+| `vim-cmd hostsvc/services list`                            | List services              | Show all services running on the host.     |
+| `esxcli system hostname set --host=<new_hostname>`         | Change hostname            | Set a new hostname for the ESXi host.      |
+| `esxcli system maintenanceMode set --enable`               | Enable maintenance mode    | Enable maintenance mode for the host.      |
+
 
 ---
 
 ## 4. Troubleshooting and Logs
 
-| Command | Description | Usage |
-|---------|-------------|-------|
-| `cat /var/log/vmkernel.log` | View ESXi logs | Show ESXi system logs. |
-| `tail -f /vmfs/volumes/<datastore>/<vm_name>/vmware.log` | Check VM logs | View log files for a specific virtual machine. |
-| `esxcli system syslog config get` | View hardware logs | Show hardware-related logs. |
-| `esxcli system syslog reload` | Clear ESXi logs | Reload the system logs after clearing. |
-| `esxtop -b` | Check VM performance | View performance metrics for virtual machines. |
-| `esxtop -m` | Monitor memory usage | Monitor the memory usage of virtual machines. |
+## 4. Troubleshooting and Logs
+
+| Command                                                    | Description                | Usage                                         |
+|------------------------------------------------------------|----------------------------|-----------------------------------------------|
+| `cat /var/log/vmkernel.log`                                | View ESXi logs             | Show ESXi system logs.                        |
+| `tail -f /vmfs/volumes/<datastore>/<vm_name>/vmware.log`   | Check VM logs              | View log files for a specific VM.             |
+| `esxcli system syslog config get`                          | View hardware logs         | Show hardware-related logs.                   |
+| `esxcli system syslog reload`                              | Clear ESXi logs            | Reload the system logs after clearing.        |
+| `esxtop -b`                                                | Check VM performance       | View performance metrics for VMs.             |
+| `esxtop -m`                                                | Monitor memory usage       | Monitor memory usage for VMs.                 |
+
 
 ---
 
@@ -102,6 +100,50 @@ Here’s a full list of the 100 VMware ESXi commands from the PDF, formatted in 
 | `esxcli network ip dns search list` | Display DNS configuration | Show the DNS search configuration for the host. |
 | `esxcli network vswitch standard portgroup list` | List VLANs | Display all VLANs on the host. |
 | `esxcli network vswitch standard list` | View vSwitch statistics | Display traffic statistics for a virtual switch. |
+
+## 5. Networking and Security
+
+<table>
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Description</th>
+      <th>Usage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>esxcli network firewall ruleset list</code></td>
+      <td>List firewall rules</td>
+      <td>Display all active firewall rules.</td>
+    </tr>
+    <tr>
+      <td><code>esxcli network firewall ruleset set --ruleset-id=&lt;ruleset_name&gt; --enabled=true</code></td>
+      <td>Enable a firewall rule</td>
+      <td>Enable a specific firewall rule on the host.</td>
+    </tr>
+    <tr>
+      <td><code>vmkping &lt;ip_address&gt;</code></td>
+      <td>Test network connectivity</td>
+      <td>Ping a network IP address to check connectivity.</td>
+    </tr>
+    <tr>
+      <td><code>esxcli network ip dns search list</code></td>
+      <td>Display DNS configuration</td>
+      <td>Show the DNS search configuration for the host.</td>
+    </tr>
+    <tr>
+      <td><code>esxcli network vswitch standard portgroup list</code></td>
+      <td>List VLANs</td>
+      <td>Display all VLANs on the host.</td>
+    </tr>
+    <tr>
+      <td><code>esxcli network vswitch standard list</code></td>
+      <td>View vSwitch statistics</td>
+      <td>Display traffic statistics for a virtual switch.</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
